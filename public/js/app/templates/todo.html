@@ -1,0 +1,13 @@
+<input class="js-toggle" type="checkbox" <%= isDone ? 'checked="checked"' : '' %>>
+<label><%- goal %></label>
+<div class="todo-item-actions">
+  <a class="js-edit" href="#" title="Delete">
+    <i class="icon-edit"></i>
+    <span>edit</span>
+  </a>
+  <a class="js-delete" href="#" title="Edit">
+    <i class="icon-delete"></i>
+    <span>delete</span>
+  </a>
+</div>
+<input class="todo-edit" value="<%- goal %>">

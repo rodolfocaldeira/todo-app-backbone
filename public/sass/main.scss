@@ -1,0 +1,412 @@
+@import 'normalize';
+
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+
+
+/* ==========================================================================
+   Todo App Styles
+   ========================================================================== */
+
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import 'icons';
+
+body {
+    background: url('../images/bg-debut-light.png') repeat;
+    color: #4c4c4c;
+}
+
+a {
+    color: #5d5d5d;
+
+    &:hover {
+        color: #f01d15;
+    }
+}
+
+#todo-app {
+    @include single-box-shadow($color: #888, $hoff: 0, $voff: 0, $blur: 2px, $spread: 0, $inset: 0);
+    @include border-radius(8px);
+    margin: 50px auto;
+    padding: 1.5em;
+    width: 400px;
+    background-color: #fff;
+}
+
+.todo-header {
+    text-align: center;
+
+    h1, h2 {
+        margin: 0;
+    }
+
+    h2 {
+        font-weight: normal;
+        font-size: 0.9em;
+    }
+}
+
+.todo-create {
+    margin: 1em 0;
+    border: 1px solid #e5e5e5;
+
+    input {
+        display: block;
+        padding: 0.5em;
+        width: 379px;
+        height: 50px;
+        border: 0;
+        font-size: 1.2em;
+    }
+
+    .lt-ie9 & input {
+        width: 378px;
+    }
+}
+
+.todo-main {
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            @extend .clearfix;
+            position: relative;
+            padding: 1em 0;
+            border-bottom: 1px solid #e5e5e5;
+
+            .js-toggle,
+            label {
+                float: left;
+            }
+
+            .js-toggle {
+                margin-top: 12px;
+                width: 20px;
+            }
+
+            label {
+                margin: 0.3em;
+                width: 75%;
+                font-size: 1.2em;
+                cursor: pointer;
+            }
+
+            .todo-item-actions {
+                display: none;
+                float: right;
+                margin-top: 10px;
+
+                a {
+                    width: 30px;
+                    text-decoration: none;
+                }
+
+                span {
+                    @extend .visuallyhidden;
+                }
+            }
+
+            &:hover {
+                .todo-item-actions {
+                    display: block;
+                }
+            }
+
+            &.is-done label {
+                color: #ddd;
+                text-decoration: line-through;
+            }
+
+            .todo-edit {
+                display: none;
+            }
+
+            &.is-edit-mode {
+                label {
+                    @extend .invisible;
+                    height: 26px;
+                }
+
+                .todo-edit {
+                    position: absolute;
+                    top: -1px;
+                    display: block;
+                    padding: 0.5em;
+                    width: 379px;
+                    height: 58px;
+                    border: 1px solid #e5e5e5;
+                    font-size: 1.2em;
+                }
+            }
+
+            &:hover {
+                .delete {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    display: block;
+                }
+            }
+
+            &:last-child {
+                border: none;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix
+ */
+
+.clearfix {
+    zoom: 1;
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   Theses examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+}
+
+@media print,
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+/*
+ * Don't show links for images, or javascript/internal links
+ */
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+p,
+h2,
+h3 {
+    orphans: 3;
+    widows: 3;
+}
+
+h2,
+h3 {
+    page-break-after: avoid;
+}
+
+    }

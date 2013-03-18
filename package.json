@@ -1,0 +1,23 @@
+{
+    "name"            : "todo-app",
+    "version"         : "1.0.0",
+    "description"     : "A simple todo app that uses HTML5 localStorage to store its data.",
+    "author"          : {
+        "name" : "Rodolfo Caldeira",
+        "emai" : "me@rodolfocaldeira.com"
+    },
+    "devDependencies" : {
+        "grunt-compass" : "*"
+    },
+    "jam"             : {
+        "packageDir"   : "public/js/vendor",
+        "baseUrl"      : "public",
+        "dependencies" : {
+            "backbone"              : "~0.9.10",
+            "underscore"            : "~1.4.3",
+            "jquery"                : "~1.9.0pre",
+            "Backbone.localStorage" : "~1.0.0",
+            "text"                  : "~2.0.2"
+        }
+    }
+}
